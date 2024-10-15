@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VoxChat</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <div class="chat">
+      <!-- Header -->
+      <div class="chat-header">
+        <div class="profile">
+          <img class="pp" src="profile.jpeg" alt="Profile Picture">
+          <h2>Pooji</h2>
+          <span>Online</span>
+          <button class="schedule-btn" onclick="toggleScheduleMessage()">Schedule</button>
+          <button class="call-btn" onclick="startCall()">Start Call</button>
+
+          <!-- Schedule Message Area -->
+          <div id="schedule-section" style="display:none;">
+            <input type="datetime-local" id="schedule-time">
+            <textarea id="scheduled-message-input" placeholder="Type a message"></textarea>
+            <button onclick="scheduleMessage()">Send</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Chat Box -->
+      <div class="chat-box" id="chat-box">
+        <!-- Messages will be added here dynamically -->
+      </div>
+
+      <!-- Footer (Message Input and Options) -->
+      <div class="chat-footer">
+        <textarea id="message-input" placeholder="Type a message"></textarea>
+        <button class="send-btn" onclick="sendMessage()">Send</button>
+      </div>
+      <div id="suggestions-box" class="suggestions hidden">
+        <div id="suggestion1" class="suggestion"></div>
+        <div id="suggestion2" class="suggestion"></div>
+        <div id="suggestion3" class="suggestion"></div>
+      </div>
+    </div>
+
+    <!-- Call Modal -->
+    <div id="call-modal" class="modal" style="display:none;">
+      <div class="modal-content">
+        <span class="close" onclick="endCall()">&times;</span>
+        <p>Call in Progress... <span id="call-timer">0:00</span></p>
+        <button id="start-recording" onclick="startRecording()">Start Recording</button>
+        <button id="stop-recording" onclick="stopRecording()" disabled>Stop Recording</button>
+        <audio id="recording" controls style="display:none;"></audio>
+      </div>
+    </div>
+  </div>
+  
+  <script src="app.js"></script>
+</body>
+</html>
